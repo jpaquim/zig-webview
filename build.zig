@@ -17,8 +17,8 @@ pub fn build(b: *std.build.Builder) void {
     exe.install();
 
     // Build webview from dummy .cpp entrypoint to correctly handle C++ code
-    exe.addCSourceFiles(&.{"src/webview.cpp"}, &.{ "-std=c++11", "-O3", "-Wno-error=elaborated-enum-base" });
-    exe.addIncludeDir("include");
+    exe.addIncludeDir("webview");
+    exe.addCSourceFiles(&.{"webview/webview.cpp"}, &.{ "-std=c++11", "-O3", "-Wno-error=elaborated-enum-base" });
     exe.linkSystemLibrary("c++");
     exe.linkFramework("WebKit");
 
